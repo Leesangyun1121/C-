@@ -6,18 +6,32 @@ int &fuc(int &ref)
 	ref++;
 	return ref;
 }
+void swap(int *(&pref1),int *(&pref2))
+{
+	int *temp;
+	temp = pref1;
+	pref1 = pref2;
+	pref2 = temp;
+}
 
 int main(void)
 {
 	int n1 = 1;
 	int &n2 = fuc(n1);
-
+	int a = 5;
+	int *ptr1 = &a;
+	int b = 10;
+	int *ptr2 = &b;
+	
 	cout<<n1<<" "<<n2<<endl;
-
 	n1++;
 	n2++;
 	cout<<n1<<endl;
 	cout<<n2<<endl;
+	
+	swap(ptr1,ptr2);
+	cout<<a<<endl;
+	cout<<b<<endl;
 
 	return 0;
 }
