@@ -1,0 +1,147 @@
+#include <iostream>
+#include <cstring>
+#include <string>
+using namespace std;
+const int name_len = 20;
+
+void ShowMenu(void);
+void MakeAccount(void);
+void DepositMoney(void);
+void WithdrawMoney(void);
+void ShowAllAccInfo(void);
+
+enum {Make = 1,Deposit,Withdraw,Inquire,Exit};
+
+typedef struct
+{
+   int accID;
+   int balance;
+   //string cusName[name_len];
+   string cusName;
+}Account;
+
+Account accarr[100];
+int accNum = 0;
+
+int main()
+{
+   int choice;
+   while(1)
+   {
+      ShowMenu();
+      cout<<"선택: ";
+      cin>>choice;
+      cout<<endl;
+
+      switch(choice)
+      {
+      case Make:
+         MakeAccount();
+         break;
+
+      case Deposit:
+         DepositMoney();
+         break;
+
+      case Withdraw:
+         WithdrawMoney();
+         break;
+
+      case Inquire:
+         ShowAllAccInfo();
+         break;
+
+      case Exit:
+         return 0;
+
+      default:
+         cout<<"Illegal selection.."<<endl;
+      }
+   }
+   return 0;
+}
+
+void ShowMenu(void)
+{
+   cout<<"-----------Menu------------"<<endl;
+   cout<<"1. 계좌개설"<<endl;
+   cout<<"2. 입금"<<endl;
+   cout<<"3. 출금"<<endl;
+   cout<<"4.계좌정보"<<endl;
+   cout<<"5.종료"<<endl;
+}
+
+void MakeAccount(void)
+{
+   int id;
+   char name[name_len];
+   int balance;
+
+   cout<<"계좌번호 등록: "<<endl;
+   cin>>id;
+
+   cout<<"이름등록: "<<endl;
+   cin>>name;
+
+   cout<<"초기금액 등록: "<<endl;
+   cin>>balance;
+
+   accarr[accNum].accID = id;
+   //accarr[accNum].cusName[20] = name;
+   accarr[accNum].cusName=name;
+   accarr[accNum].balance = balance;
+   cout<<accarr[accNum].accID<<" "<<accarr[accNum].cusName<<" "<<accarr[accNum].balance<<endl;
+   accNum = accNum + 1;
+
+}
+
+void DepositMoney(void)
+{
+   int money;
+   int id;
+   cout<<"계좌번호입력:"<<endl;
+   cin>>id;
+   for(int i = 0;i<accNum;i++)
+   {
+      if (id == accarr[i].accID)
+      {
+         cout<<"이름:"<<accarr[i].cusName<<endl;
+         cout<<"입금액: "<<endl;
+         cin>>money;
+         accarr[i].balance = accarr[i].balance + money;
+         cout<<"현재금액: "<<accarr[i].balance<<endl;
+         return;
+      }
+   }
+   cout<<"유효하지 않은 ID입니다."<<endl;
+}
+
+void WithdrawMoney(void)
+{
+   int money;
+   int id;
+   cout<<"계좌입력: ";
+   cin>>id;
+   cout<<"출금액 입력: ";
+   cin>>money;
+
+   for (int i=0;i<accNum;i++)
+   {
+      if (id == accarr[i].accID)
+      {
+         accarr[i].balance = accarr[i].balance - money;
+         cout<<"현재금액: "<<accarr[i].balance<<endl;
+         return;
+      }
+   }
+   cout<<"유효하지 않은 ID입니다."<<endl;
+
+}
+
+void ShowAllAccInfo(void)
+{
+   for (int i = 0;i<accNum;i++)
+   {
+      cout<<"계좌번호: "<<accarr[i].accID<<" "<<"이름: "<<accarr[i].cusName<<" "<<"잔액: "<<accarr[i].balance<<endl;
+   }
+}
