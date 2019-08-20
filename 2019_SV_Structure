@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+#define Id_len 20
+#define Max_spd 200
+#define Fuel_step 2
+#define Acc_step 10
+#define Brk_step 10
+
+struct Car
+{
+	char gameId[Id_len];
+	int FuelGauge;
+	int CurSpeed;
+};
+
+void ShowCarStat(const Car &car)
+{
+	cout<<"소유주명: "<<car.gameId<<endl;
+	cout<<"연료량: "<<car.FuelGauge<<"%"<<endl;
+	cout<<"현재속도: "<<car.CurSpeed<<"km/s"<<endl;
+}
+void Accel(Car &car)
+{
+	if (car.FuelGauge<=0)
+		return;
+	else
+		car.FuelGauge = car.FuelGauge - Fuel_step;
+	if (car.CurSpeed >=Max_spd)
+	{
+		car.CurSpeed = Max_spd;
+		return;
+	}
+	car.CurSpeed = car.CurSpeed + Acc_step;
+}
+void Break(Car &car)
+{
+	if (car.CurSpeed<Brk_step)
+	{
+		car.CurSpeed = 0;
+		return;
+	}
+	car.CurSpeed = car.CurSpeed - Brk_step;
+}
+
+int main(void)
+{
+	Car run99 = {"run99",100,0}; //구조체 변수 초기화
+	Accel(run99);
+	Accel(run99);
+	ShowCarStat(run99);
+
+	Break(run99);
+	ShowCarStat(run99);
+
+	Car spd77 = {"spd77",100,0};
+	Accel(spd77);
+	Break(spd77);
+	ShowCarStat(spd77);
+	return 0;
+}
