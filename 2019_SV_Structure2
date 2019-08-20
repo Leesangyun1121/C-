@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+struct Point
+{
+	int xpos;
+	int ypos;
+
+	void ShowPosition(void)
+	{
+		cout<<"["<<xpos<<","<<ypos<<"]"<<endl;
+		return;
+	}
+	void MovePos(int a,int b)
+	{
+		xpos = xpos + a;
+		ypos = ypos + b;
+		return;
+	}
+	void AddPoint(Point &pos)
+	{
+		xpos = xpos + pos.xpos;
+		ypos = ypos + pos.ypos;
+		return;
+	}
+};
+
+int main(void)
+{
+	Point pos1 = {12,4};
+	Point pos2 = {20,30};
+
+	pos1.MovePos(-7,10);
+	pos1.ShowPosition();
+
+	pos1.AddPoint(pos2);
+	pos1.ShowPosition();
+	return 0;
+}
