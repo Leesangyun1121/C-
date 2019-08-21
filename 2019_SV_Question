@@ -1,0 +1,114 @@
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+class Calculator
+{
+private:
+	string userId;
+	int addnum;
+	int minusnum;
+	int multinum;
+	int divnum;
+public:
+	void Init(string Id)
+	{
+		userId = Id;
+		addnum = 0;
+		minusnum = 0;
+		multinum = 0;
+		divnum = 0;
+	}
+	double Add(Calculator &cal)
+	{
+		cout<<"더하기 메뉴입니다.두 수를 입력하시오."<<endl;
+		double a;
+		double b;
+		cin>>a;
+		cin>>b;
+		cal.addnum = cal.addnum + 1;
+		return a + b;
+	}
+	double Minus(Calculator &cal)
+	{
+		cout<<"빼기 메뉴입니다.두 수를 입력하시오."<<endl;
+		double a;
+		double b;
+		cin>>a;
+		cin>>b;
+		cal.minusnum = cal.minusnum + 1;
+		return a - b;
+	}
+	double Mul(Calculator &cal)
+	{
+		cout<<"곱하기 메뉴입니다.두 수를 입력하시오."<<endl;
+		double a;
+		double b;
+		cin>>a;
+		cin>>b;
+		cal.multinum = cal.multinum +1;
+		return a*b;
+	}
+	double Div(Calculator &cal)
+	{
+		cout<<"나누기 메뉴입니다.두 수를 입력하시오."<<endl;
+		double a;
+		double b;
+		cin>>a;
+		cin>>b;
+		cal.divnum = cal.divnum + 1;
+		return a/b;
+	}
+	void ShowOpCount(Calculator &cal)
+	{
+		cout<<"userId: "<<cal.userId<<endl;
+		cout<<"더한 횟수: "<<cal.addnum<<endl;
+		cout<<"뺀 횟수: "<<cal.minusnum<<endl;
+		cout<<"곱한 횟수: "<<cal.multinum<<endl;
+		cout<<"나눈 횟수: "<<cal.divnum<<endl;
+	}
+};
+void ShowMenu(void)
+{
+	cout<<"1.유저등록"<<endl;
+	cout<<"2.더하기"<<endl;
+	cout<<"3.빼기"<<endl;
+	cout<<"4.곱하기"<<endl;
+	cout<<"5.나누기"<<endl;
+	cout<<"6.종료"<<endl;
+}
+Calculator arr[100];
+int num = 0;
+int main(void)
+{
+	int choice;
+	enum { Register = 1,Plus,Minus,Multiply,Diverge,Exit}
+	while(1)
+	{
+		ShowMenu();
+		cout<<"메뉴선택: ";
+		cin>>choice;
+		cout<<endl;
+		
+		switch(choice)
+		{
+		case Register:
+			string a;
+			string b;
+			cout<<"유저등록 메뉴입니다.아이디를 입력하세요: ";
+			cin>>a;
+			cout<<"이름을 입력하세요: ";
+			cin>>b;
+			Calculator a;
+			a.Init(b);
+			cout<<"유저등록이 완료되었습니다."<<endl;
+		case Plus:
+			string a;
+			cin>>a;
+			Calculator a;
+			cout<<"유저 아이디 입력: ";
+			//함수나 입력값을 이용한 객체만들기 질문
+			a.Add(a)
+
+	return 0;
+}*/
