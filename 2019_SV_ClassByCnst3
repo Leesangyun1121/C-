@@ -1,0 +1,43 @@
+//private는 클래스 내부에서만 이용가능한데 객체를 클래스 내부에서 만들면 생성자를 private로 선언해도 된다.
+#include <iostream>
+using namespace std;
+
+
+class AAA
+{
+private:
+	int num;
+public:
+	AAA() : num(0)
+	{
+	}
+	AAA& CreateInitObj(int n) const
+	{
+		AAA *ptr = new AAA(n);
+		return *ptr;
+    //반환형이 *이다.
+	}
+	void ShowNum() const
+	{
+		cout<<num<<endl;
+	}
+private:
+	AAA(int n) : num(n)
+	{
+	}
+};
+int main(void)
+{
+	AAA base;
+	base.ShowNum();
+
+	AAA& obj1 = base.CreateInitObj(3);
+	obj1.ShowNum();
+
+	AAA& obj2 = base.CreateInitObj(12);
+	obj2.ShowNum();
+
+	delete &obj1;
+	delete &obj2;
+	return 0;
+}
