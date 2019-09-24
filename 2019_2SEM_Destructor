@@ -1,0 +1,40 @@
+//소멸자연습
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person
+{
+private:
+	char *name;
+	int age;
+
+public:
+	Person( const char* myname, int myage)//NameCard 생성자를 보시면 인수가 char* 타입으로 되어있는데, 문자열 리터럴 "abcd" 등은 const char*으로만 받을수 있습니다. 따라서 모든 char*에 const 를 추가하셔야합니다.
+	{
+		int len = strlen(myname) + 1;
+		name = new char[len];
+		strcpy_s(name,len,myname);
+		age = myage;
+
+	}
+	void ShowPersonInfo() const
+	{
+		cout << "이름:" << name << endl;
+		cout << "나이:" << age << endl;
+	}
+	~Person()
+	{
+		delete []name;
+		cout << "소멸자 적용" << endl;
+	}
+};
+int main(void)
+{
+	Person man1("lee sang yun ", 24);
+	Person man2("lsj", 21);
+
+	man1.ShowPersonInfo();
+	man2.ShowPersonInfo();
+	return 0;
+}
